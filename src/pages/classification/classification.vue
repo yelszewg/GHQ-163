@@ -11,25 +11,10 @@
     <div class="navLeft">
       <div class="leftItem">
         <ul class="itemUl">
-          <li class="active">推荐专区</li>
-          <li>秋冬好物</li>
-          <li>爆品专区</li>
-          <li>新品专区</li>
-          <li>居家生活</li>
-          <li>服饰鞋服</li>
-          <li>美食酒水</li>
-          <li>个护清洁</li>
-          <li>母婴亲子</li>
-          <li>运动旅行</li>
-          <li>数码家电</li>
-          <li>全球特色</li>
-          <li>全球特色</li>
-          <li>全球特色</li>
-          <li>全球特色</li>
-          <li>全球特色</li>
-          <li>全球特色</li>
-          <li>全球特色</li>
-          <li>全球特色</li>
+          <li 
+            
+          >{{}}</li>
+          
 
         </ul>
       </div>
@@ -52,17 +37,35 @@
 
 <script>
 import BScroll from 'better-scroll'
+import {mapState} from 'vuex'
 export default {
+  data() {
+    return {
+      curIndex: 0
+    }
+  },
   name: 'class',
+  computed: {
+    ...mapState({
+      categoryData: store => store.classification.categoryData
+    })
+  },
+ 
 
   mounted() {
-    new BScroll('.leftItem',{
-      click: true,
-      scrollY: true
-    })
     this.$nextTick(() => {
-      
+      new BScroll('.leftItem',{
+        click: true,
+        scrollY: true
+      })
     })
+
+    this.$store.dispatch('getcategoryData')
+  
+  },
+  watch: {
+   
+    
   },
 
 }
@@ -116,8 +119,13 @@ export default {
         max-height 2200px
         border-right 1px solid #eeeeee
         .itemUl
+          display flex
+          flex-direction column
           width 100%
+          height 2200px
           >li
+            display flex
+            justify-content center
             width 162px
             height 50px
             font-size 28px

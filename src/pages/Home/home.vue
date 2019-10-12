@@ -17,16 +17,27 @@
           <span>48小时快速退款</span>
         </li>
       </ul>
-
+      
     </div>
+    <Stylebox></Stylebox>
+    
   </div>
+  
 </template>
 
 <script>
+import Stylebox from './components/STYLEBOX.vue'
+import newhito from './components/newhito'
 import '../../common/swiper/swiper.css'
 import Swiper from 'swiper'
+import {mapState} from 'vuex'
 export default {
   name: 'home',
+  
+  
+  components: {
+    Stylebox,
+  },
   data() {
     return {
       isImg: [
@@ -54,6 +65,7 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   .header
     margin-top 150px
+    background-color #ededed
     .swipercontent
       width 100%
       .swiperItem
@@ -61,6 +73,7 @@ export default {
           width 100%
 
     .publicity
+      background-color #fff
       height 72px
       .publicityItem
         display flex

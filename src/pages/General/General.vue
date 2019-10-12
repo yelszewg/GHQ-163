@@ -36,7 +36,7 @@ export default {
       .headerFont
         
         font-size 28px
-        >sp                     0an 
+        >span 
           margin-right 15px
         &.active
           color #b4282d
