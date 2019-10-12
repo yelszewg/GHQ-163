@@ -19,9 +19,10 @@ const mutations = {
 const actions = {
   async getCategoryData ({commit}) {
     const result = await reqClassification()
-    categoryData = result.data.currentCategory
+    
 
     if(result.code === 0) {
+      const categoryData = result.data.categoryL1List
       commit(GET_CATEGORY_DATA, {categoryData})
     }
   }

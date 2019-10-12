@@ -11,22 +11,22 @@
     <div class="navLeft">
       <div class="leftItem">
         <ul class="itemUl">
-          <li 
-            
-          >{{}}</li>
+          <li v-for="(item, index) in categoryData" :key="index"
+              :class="{active:categoryData[curIndex]===item}"
+          >{{item.name}}</li>
           
 
         </ul>
       </div>
-      <div class="navContent">
+      <div class="navContent" v-if="categoryData[curIndex]">
         <div class="imgItem">
-          <img src="https://yanxuan.nosdn.127.net/01467535cd09249bd5cf0ae110845892.jpg?imageView&quality=75&thumbnail=0x196" alt="">
+          <img :src="categoryData[curIndex].wapBannerUrl" alt="">
         </div>
         <ul>
-          <li>
-            <div>
-              <img src="https://yanxuan.nosdn.127.net/71a5f1a0299e278f8193c193d8b7d1e4.png?imageView&quality=85&thumbnail=144x144" alt="">
-              <span>明星商品低至69元</span>
+          <li >
+            <div v-for="(item, index) in categoryData[curIndex].subCateList" :key="index">
+              <img :src="item.wapBannerUrl" alt="">
+              <span>{{item.name}}</span>
             </div>
           </li>
         </ul>
@@ -47,24 +47,26 @@ export default {
   name: 'class',
   computed: {
     ...mapState({
-      categoryData: store => store.classification.categoryData
+      categoryData: store => store.category.categoryData
     })
   },
  
 
   mounted() {
-    this.$nextTick(() => {
-      new BScroll('.leftItem',{
-        click: true,
-        scrollY: true
-      })
-    })
+    
 
-    this.$store.dispatch('getcategoryData')
+    this.$store.dispatch('getCategoryData')
   
   },
   watch: {
-   
+    deep: true,
+    categoryData() {
+      this.$nextTick(()=>{
+        new BScroll('.leftItem',{
+          click: ture,
+      })
+      }) 
+    }
     
   },
 
@@ -154,6 +156,8 @@ export default {
           display flex
           flex-wrap wrap
           >li
+            display flex
+            flex-wrap wrap
             width 144px
             height 216px
             margin-right 30px
