@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <div class="boxItem">
+    <div class="boxItem" v-if="homeData">
       <ul v-for="(item, index) in homeData.homeData.kingKongModule.kingKongList" :key="index">
         <li >
           <img :src="item.picUrl"  alt="">

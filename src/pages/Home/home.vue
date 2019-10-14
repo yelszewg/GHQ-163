@@ -19,8 +19,11 @@
       </ul>
       
     </div>
-    <Stylebox></Stylebox>
     
+    <Stylebox></Stylebox>
+    <div class="imgcenter">
+      <img src="https://yanxuan.nosdn.127.net/df012027a9bd3c0b0e5779c11b814180.png" alt="">
+    </div>
   </div>
   
 </template>
@@ -87,4 +90,11 @@ export default {
             font-size 24px
             line-height 72px
             color #333
+
+    .imgcenter
+      height 160px
+      margin-bottom 30px
+      color #fff
+      >img 
+        width 100%
 </style>
