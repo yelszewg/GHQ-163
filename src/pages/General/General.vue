@@ -45,7 +45,14 @@
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
+  import {mapState} from 'vuex'
   export default {
+    name: 'general',
+    computed: {
+      ...mapState({
+        getTab
+      })
+    },
     mounted() {
       this.$nextTick(() => {
         if (!this.BScroll) {

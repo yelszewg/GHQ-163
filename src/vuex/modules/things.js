@@ -9,9 +9,29 @@ export const state = {
 }
 
 export const actions = {
-  
+  [GET_THINGS_DATA](state, getTab) {
+    state.getTab = getTab
+  }
 }
 
 export const mutations = {
+  async getTabData({commit}) {
+    const result = await reqGeneral
 
+    if (result.code === 0) {
+      const getTab = result.data
+      commit(GET_THINGS_DATA, {
+        getTab
+      })
+    }
+  }
+}
+
+const getters= {}
+
+export default {
+  state,
+  mutations,
+  actions,
+  getters
 }
